@@ -15,28 +15,31 @@ VALUES {
 }
 
 CREATE TABLE Musician_Track (
-	IdTrack int NOT NULL PRIMARY KEY;
-	IdMusician int NOT NULL PRIMARY KEY;
+	IdTrack int NOT NULL;
+	IdMusician int NOT NULL;
+	CONSTRAINT Musician_Track_pk PRIMARY KEY (IdTrack, IdMusician);
 )
 
 CREATE TABLE Track (
-	IdTrack int NOT NULL IDENTITY AUTO_INCREMENT PRIMARY KEY;
+	IdTrack int NOT NULL IDENTITY AUTO_INCREMENT;
 	TrackName nvarchar(20) NOT NULL;
 	Duration float NOT NULL;
 	IdMusicAlbum int;
-	CONSTAINT Track_pk PRIMARY KEY (IdTrack);
+	CONSTRAINT Track_pk PRIMARY KEY (IdTrack);
 )
 
 CREATE TABLE Album (
-	IdAlbum int NOT NULL IDENTITY AUTO_INCREMENT PRIMARY KEY;
+	IdAlbum int NOT NULL IDENTITY AUTO_INCREMENT;
 	AlbumName nvarchar(30) NOT NULL;
 	PublishDate datetime NOT NULL;
 	IdMusicLabel int NOT NULL;
+	CONSTRAINT Album_pk PRIMARY KEY (IdAlbum);
 )
 
 CREATE TABLE MusicLabel (
-	IdMusicLabel int NOT NULL IDENTITY AUTO_INCREMENT PRIMARY KEY;
+	IdMusicLabel int NOT NULL IDENTITY AUTO_INCREMENT;
 	Name nvarchar(50) NOT NULL;
+	CONSTRAINT MusicLabel_pk PRIMARY KEY (IdMusicLabel);
 )
 
 ALTER TABLE Musician_Track ADD CONSTRAINT Musician_Track_Track
